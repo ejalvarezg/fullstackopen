@@ -1,3 +1,9 @@
+/*
+
+  COMPONENT: HEADER
+
+*/
+
 const Header = (props) => {
   console.log(props)
   return (
@@ -7,45 +13,87 @@ const Header = (props) => {
   )
 }
 
+/*
+
+  COMPONENT: PART
+
+*/
+
 const Part = (props) => {
-  console.log(props)
+  console.log('Part component:', props)
   return (
     <>
-      <p> {props.parte} {props.ejercicio} </p>
+      <p> {props.parts[props.pos].name} {props.parts[props.pos].exercises} </p>
     </>
   )
 }
+
+/*
+
+  COMPONENT: CONTENT
+
+*/
 
 const Content = (props) => {
-  console.log(props)
+  console.log('Content component:', props)
+  // console.log(props.parts[0].name)
+
   return (
     <>
-      <Part parte = 'Fundamentals of React' ejercicio = {props.ejercicios[0]} />
-      <Part parte = 'Using props to pass data' ejercicio = {props.ejercicios[1]} />
-      <Part parte = 'State of a component' ejercicio = {props.ejercicios[2]} />   
+    <Part parts = {props.parts} pos = {0} />
+    <Part parts = {props.parts} pos = {1} />
+    <Part parts = {props.parts} pos = {2} />
     </>
   )
 }
+
+/*
+
+  COMPONENT: TOTAL
+
+*/
 
 const Total = (props) => {
-  console.log(props)
+  console.log('Total component:', props)
+  const total = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises
   return (
     <>
-      <p> Total: {props.total} </p>
+      <p> Total: {total} </p>
     </>
   )
 }
 
+/*
+
+  APP
+
+*/
+
 const App = () => {
-  const exercises1 = 10
-  const exercises2 = 7
-  const exercises3 = 14
+
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   return (
     <>
-      <Header course = 'Half Stack application development' />
-      <Content ejercicios = {[exercises1, exercises2, exercises3]} />
-      <Total total = {exercises1 + exercises2 + exercises3} />
+      <Header course = {course.name} />
+      <Content parts = {course.parts} />
+      <Total parts = {course.parts} />
     </>
   )
 }
