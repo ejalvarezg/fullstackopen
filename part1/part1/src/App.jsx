@@ -243,6 +243,30 @@ import { useState } from 'react'
 
 // Manejo de matrices
 
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <>
+        <p>the app is used by pressing the buttons</p>
+      </>
+    )
+  }
+  // Join envia toda la matriz, separando cada posición con el caracter indicado como parámetro
+  return (
+    <>
+      <p>button press history:</p>
+      <p>Total clicks: {props.allClicks.length}</p>
+      <p>{props.allClicks.join('-')}</p>
+    </>
+  )
+}
+
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>
+    {text}
+  </button>
+)
+
 const App = () => {
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
@@ -254,6 +278,7 @@ const App = () => {
   const handleLeftClick = () => {
     // Al dar clic en el botón de la izquierda, se agrega una L a la matriz
     setAll(allClicks.concat('L'))
+    // Para resolver el problema de la actualización asincrónica
     const updatedLeft = left + 1
     setLeft(updatedLeft)
     setTotal(updatedLeft + right)
@@ -263,21 +288,20 @@ const App = () => {
   const handleRightClick = () => {
     // Al dar clic en el botón de la derecha, se agrega una R a la matriz
     setAll(allClicks.concat('R'))
+    // Para resolver el problema de la actualización asincrónica
     const updatedRight = right + 1
     setRight(updatedRight)
     setTotal(left + updatedRight)
   }
-
-  // Join envia toda la matriz, separando cada posición con el caracter indicado como parámetro
+  
   return (
     <>
       {left}
-      <button onClick={handleLeftClick}>left</button>
-      <button onClick={handleRightClick}>right</button>
+      <Button handleClick={handleLeftClick} text='left' />
+      <Button handleClick={handleRightClick} text='right' />
       {right}
 
-      <p>{allClicks.join('-')}</p>
-      <p>total {total}</p>
+      <History allClicks={allClicks} />
     </>
   )
 }
