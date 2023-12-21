@@ -1,19 +1,43 @@
 {
-    "notes": [
-      {
-        "id": 1,
-        "content": "HTML is easy",
-        "important": true
-      },
-      {
-        "id": 2,
-        "content": "Browser can execute only JavaScript",
-        "important": false
-      },
-      {
-        "id": 3,
-        "content": "GET and POST are the most important methods of HTTP protocol",
-        "important": true
-      }
-    ]
-  }
+  "notes": [
+    {
+      "id": 1,
+      "content": "HTML is easy",
+      "important": true
+    },
+    {
+      "id": 2,
+      "content": "Browser can execute only JavaScript",
+      "important": true
+    },
+    {
+      "id": 3,
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": true
+    },
+    {
+      "content": "My new note",
+      "date": "2023-12-21T14:10:01.934Z",
+      "important": false,
+      "id": 4
+    },
+    {
+      "content": "My new note2",
+      "date": "2023-12-21T14:11:31.391Z",
+      "important": false,
+      "id": 5
+    },
+    {
+      "content": "Nota",
+      "date": "2023-12-21T14:12:29.639Z",
+      "important": true,
+      "id": 6
+    },
+    {
+      "content": "POST is used to add data to a REST api",
+      "date": "2023-12-21T14:21:50.290Z",
+      "important": true,
+      "id": 7
+    }
+  ]
+}

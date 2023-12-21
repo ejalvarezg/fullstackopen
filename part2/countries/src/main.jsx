@@ -10,7 +10,7 @@ import axios from 'axios'
   </React.StrictMode>,
 ) */
 
-const promise = axios.get('http://localhost:3001/posts')
+const promise = axios.get('https://restcountries.com/v3.1/all')
 console.log(promise) // para asegurarse de que funciona la conexión
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
