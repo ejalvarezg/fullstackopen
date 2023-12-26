@@ -34,6 +34,14 @@ const App = () => {
       .then(returnedNote => {
         setNotes(notes.map(note => note.id !== id ? note : returnedNote))
       })
+      // Tratamiento de errores
+      .catch(error => {
+        alert(
+          `the note '${note.content}' was already deleted from server`
+        )
+        // eliminando la nota que no está en el servidor (se hace al detectar el error)
+        setNotes(notes.filter(n => n.id !== id))
+      })
   }
 
 
