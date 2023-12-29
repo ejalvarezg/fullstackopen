@@ -1,15 +1,19 @@
 import React from 'react'
 
-const DeleteButton = ({ persons, setPersons, person }) => {
+// deletePerson es el controlador de eventos
+
+const DeleteButton = ({ persons, setPersons, person, deletePerson }) => {
     const idPerson = person.id
-    const newPersons = setPersons(persons.filter(n => n.id !== idPerson))
+    if (deletePerson) {
+        setPersons(persons.filter(n => n.id !== idPerson))
+    }
 
     return (
         <li>
-            {newPersons.content} 
-            <button onClick={setPersons}>Eliminar</button>
+            {person.content} 
+            <button onClick={deletePerson}>Eliminar</button>
         </li>
     )
 }
 
-export default Note
+export default DeleteButton
